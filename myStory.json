@@ -1,0 +1,97 @@
+{
+    "Title": "Watch Your Backdoors!",
+    "Credits": "Created by Quincy Hurst (qhurst@ucsc.edu).",
+    "InitialLocation": "Downloads",
+    "Locations": {
+        "Downloads" : {
+            "Body" : "ls -a",
+            "Type" : "Directory",
+            "Name" : "Downloads",
+            "Choices" : [
+                {
+                    "Text" : "..",
+                    "Target" : "~"
+                },
+                {
+                    "Text" : "changeColor.js",
+                    "Target" : "changeColor.js"                },
+                {
+                    "Text" : "cats.png",
+                    "Target" : "cats.png"
+                },
+                {
+                    "Text" : "index.html",
+                    "Target" : "index.html"
+                }
+            ]
+        },
+        "index.html" : {
+            "Body" : "This is me, a malware program that downloaded itself to Karl's \"Swagbook\" after he visited a porn website. My goal is to delete Karl's entire OS. To do that, I'll need to find a way to give myself admin privileges and find a terminal executable.",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Downloads"
+                }
+            ]
+        },
+        "cats.png" : {
+            "Body" : "Ooo cute photo. Even cuter now that I've embedded a reference to this file within myself, allowing me to access it from anywhere.",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Downloads"
+                }
+            ]
+        },
+        "changeColor.js" : {
+            "Body" : "",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Downloads"
+                }
+            ]
+        },
+        "~" : {
+            "Body" : "ls -a",
+            "Type" : "Directory",
+            "Name" : "~",
+            "Choices" : [
+                {
+                    "Text" : "Downloads",
+                    "Target" : "Downloads"                
+                },
+                {
+                    "Text" : "Scripts",
+                    "Target" : "Scripts"
+                },
+                {
+                    "Text" : "Apps",
+                    "Target" : "Apps"
+                }
+            ]
+        },
+        "Scripts" : {
+            "Body" : "ls -a",
+            "Type" : "Directory",
+            "Name" : "Scripts",
+            "Choices" : [
+                {
+                    "Text" : "..",
+                    "Target" : "~"
+                }
+            ]
+        },
+        "Apps" : {
+            "Body" : "ls -a",
+            "Type" : "Directory",
+            "Name" : "Apps",
+            "Choices" : [
+                {
+                    "Text" : "..",
+                    "Target" : "~"
+                }
+            ]
+        }
+    }
+}
