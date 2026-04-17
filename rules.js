@@ -4,6 +4,9 @@ const altName = "Virus-Chan";
 var name = userName;
 var scripts = [];
 var hasAdminPrivileges = false;
+var hasCatPicture = false;
+var catPath;
+var changeColor;
 
 class Start extends Scene {
     create() {
@@ -19,7 +22,9 @@ class Start extends Scene {
 class Location extends Scene {
 
     getCommandLine(message) {
-        if(this.locationData.Type == "Directory") {
+        if(!message) {
+            return "";
+        } else if(this.locationData.Type == "Directory") {
             return `[${name}@${deviceName} ${this.locationData.Name}]$ ${message}`;
         } else {
             return `${message}`;
@@ -28,11 +33,24 @@ class Location extends Scene {
 
     create(key) {
         this.locationData = this.engine.storyData.Locations[key];
+        if(this.locationData.Type == "Image") {
+            this.engine.showImage(this.locationData.Path);
+            catPath = this.locationData.Path;
+            hasCatPicture = true;
+        }
+
         this.engine.show(this.getCommandLine(this.locationData.Body)); 
 
         if(this.locationData.Type == "Script" && !scripts.includes(key)) {
             scripts.push(key);
         }
+
+        if(key === "changeColor.js") {
+            changeColor = document.createElement("script");
+            changeColor.onload = () => {};
+            changeColor.src = this.locationData.Path;
+        }
+
         
         if(this.locationData.Choices != undefined) { 
             if(key == "terminal") for(let choice of this.locationData.Choices) {
@@ -51,6 +69,9 @@ class Location extends Scene {
                     }
                 }
             } 
+            if(hasCatPicture) {
+                this.engine.addChoice("cats.jpg", {Target:key, IsImage:true});
+            }
         } else {
             //Finished the game by deleting the OS
             window.close();
@@ -60,7 +81,9 @@ class Location extends Scene {
     handleChoice(choice) {
         if(choice) {
             let command;
-            if(this.locationData.Type == "Directory") {
+            if(choice.IsImage === true) {
+                this.engine.showImage(catPath);
+            } else if(this.locationData.Type == "Directory") {
                 switch(this.engine.storyData.Locations[choice.Target].Type) {
                 case "Directory":
                     command = `cd ${choice.Text}`;
@@ -84,10 +107,13 @@ class Location extends Scene {
                     break;
                 case "changeColor.js":
                     command = choice.Effect;
+                    document.head.appendChild(changeColor);
                     break;
                 }
             } else command = `${choice.Text}`;
             this.engine.show(this.getCommandLine(command));
+            //Only the win condition has no target
+            if(choice.Target === undefined) window.close();
             this.engine.gotoScene(Location, choice.Target);
         } else {
             //Finished the game by deleting the OS

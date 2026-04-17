@@ -17,8 +17,8 @@
                     "Target" : "changeColor.js"                
                 },
                 {
-                    "Text" : "cats.png",
-                    "Target" : "cats.png"
+                    "Text" : "cats.jpg",
+                    "Target" : "cats.jpg"
                 },
                 {
                     "Text" : "index.html",
@@ -35,7 +35,9 @@
                 }
             ]
         },
-        "cats.png" : {
+        "cats.jpg" : {
+            "Type" : "Image",
+            "Path" : "assets/cats.jpg",
             "Body" : "Ooo cute photo. Even cuter now that I've embedded a reference to this file within myself, allowing me to access it from anywhere.",
             "Choices" : [
                 {
@@ -46,7 +48,8 @@
         },
         "changeColor.js" : {
             "Type" : "Script",
-            "Body" : "",
+            "Path" : "changeColor.js",
+            "Body" : "This script can change the font color on this webpage. Unfortunately, I cannot run it through the command line.",
             "Choices" : [
                 {
                     "Text" : ".",
@@ -103,7 +106,7 @@
             ]
         },
         "changeName.sh" : {
-            "Body" : "",
+            "Body" : "This script can let me change Karl's username to whatever I want. Unfortunately, I need admin privileges to run it...",
             "Type" : "Script",
             "Choices" : [
                 {
@@ -182,7 +185,7 @@
                     "Target" : "Apps"
                 },
                 {
-                    "Text" : "rm -rf /"
+                    "Text" : "Looks like I have privileges now! $ rm -rf /"
                 }
             ]
         }

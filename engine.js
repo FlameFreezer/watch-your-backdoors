@@ -49,6 +49,15 @@ class Engine {
         div.innerHTML = msg;
         this.output.appendChild(div);
     }
+
+    showImage(path) {
+        let image = document.createElement("img");
+        image.src = path;
+        image.width = 160;
+        image.height = 90;
+        image.alt = `Couldn't find image at ${path}`;
+        this.output.appendChild(image);
+    }
 }
 
 class Scene {
