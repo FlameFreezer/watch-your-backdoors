@@ -14,7 +14,8 @@
                 },
                 {
                     "Text" : "changeColor.js",
-                    "Target" : "changeColor.js"                },
+                    "Target" : "changeColor.js"                
+                },
                 {
                     "Text" : "cats.png",
                     "Target" : "cats.png"
@@ -44,6 +45,7 @@
             ]
         },
         "changeColor.js" : {
+            "Type" : "Script",
             "Body" : "",
             "Choices" : [
                 {
@@ -79,6 +81,34 @@
                 {
                     "Text" : "..",
                     "Target" : "~"
+                },
+                {
+                    "Text" : "cool.sh",
+                    "Target" : "cool.sh"
+                },
+                {
+                    "Text" : "changeName.sh",
+                    "Target" : "changeName.sh"
+                }
+            ]
+        },
+        "cool.sh" : {
+            "Body" : "This script can give me admin privileges! Unfortunately, I need admin privileges to run it...",
+            "Type" : "Script",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Scripts"
+                }
+            ]
+        },
+        "changeName.sh" : {
+            "Body" : "",
+            "Type" : "Script",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Scripts"
                 }
             ]
         },
@@ -90,6 +120,69 @@
                 {
                     "Text" : "..",
                     "Target" : "~"
+                },
+                {
+                    "Text" : "cubeNinja",
+                    "Target" : "cubeNinja"
+                },
+                {
+                    "Text" : "terminal",
+                    "Target" : "terminal"
+                }
+            ]
+        },
+        "cubeNinja" : {
+            "Body" : "Wow this game sucks! Who would buy such a thing?",
+            "Type" : "Script",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Apps"
+                },
+                {
+                    "Text" : "Oh, look! A backdoor!",
+                    "Target" : "Backdoor"
+                }
+            ]
+        },
+        "Backdoor" : {
+            "Body" : "This game was so bad that it had a backdoor. I can execute code from any script that I've collected so far while I'm here.",
+            "Type" : "Backdoor",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Apps"
+                }
+            ],
+            "Scripts" : [
+                {
+                    "Text" : "cool.sh",
+                    "Effect" : "Gave root privileges to /home/\\bname$/Downloads/index.html",
+                    "Target" : "Backdoor"
+                },
+                {
+                    "Text" : "changeName.sh",
+                    "Effect" : "Changed name of user \"\\bname$\" to \"Virus-Chan\"",
+                    "Target" : "Backdoor"
+                },
+                {
+                    "Text" : "changeColor.js",
+                    "Effect" : "Changed text color",
+                    "Target" : "Backdoor"
+                }
+            ]
+        },
+        "terminal" : {
+            "Body" : "In this terminal program, I could delete the OS if I had admin privileges...",
+            "Type" : "Script",
+            "Name" : "terminal",
+            "Choices" : [
+                {
+                    "Text" : ".",
+                    "Target" : "Apps"
+                },
+                {
+                    "Text" : "rm -rf /"
                 }
             ]
         }
